@@ -1,0 +1,32 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<title>Registration</title>
+</head>
+<body>
+	<div>
+		<div class="card-panel #eceff1 blue-grey lighten-5">
+			<p>
+				{% with messages = get_flashed_messages(with_categories=true) %}
+  					{% if messages %}
+    					<ul class=flashes>
+    					{% for category, message in messages %}
+      						<li class="color: grey white-text {{ category }}">{{ message }}</li>
+    					{% endfor %}
+    					</ul>
+  					{% endif %}
+				{% endwith %}
+			<form action="/process" method="POST">
+				Email: <input type="text" name="email">
+				First Name: <input type="text" name="first_name">
+				Last Name: <input type="text" name="last_name">
+				Date of Birth: <input type="date" name="birthday" min="2016-5-21">
+				Password: <input type="text" name="pass">
+				Confirm Password: <input type="text" name="confirm_pass">
+				<input type="submit" action="submit info" name: "Submit">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
